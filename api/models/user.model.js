@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-},{timestamps: true});
+},{timestamps: true}); // it will show when the user created and updated the data
 
 const User = mongoose.model('User', userSchema);
 
