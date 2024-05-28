@@ -6,7 +6,8 @@ import authRouter from './routes/auth.route.js';
 
 dotenv.config();
 const app = express();
-app.use(express.json()); // it allows to send the data to the browser in the json format
+
+app.use(express.json()); // it allows to send the data to the browser in the json format, otherwise it will send undefined
 
 mongoose.connect(process.env.MONGO).then(() => {
     console.log("Connected to MongoDB");

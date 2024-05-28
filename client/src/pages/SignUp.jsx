@@ -2,45 +2,54 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({}); // initial values are given inside the useState
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value,
+      [e.target.id]: e.target.value,  /* whosoever is changed, set that in the formdata without changing the other values, id is mentioned in the html, those id will be used */ 
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      setLoading(true); // the first thing is to set the loading --> true :)
+
       const res = await fetch('/api/auth/signup', {
-        method: 'POST',
+        method: 'POST', // It's a POST request, which is typically used to submit data to a server.
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json', // it contains JSON data
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), // converts into JSON string
       });
+
       const data = await res.json();
+
       console.log(data);
+
       if (data.success === false) {
         setLoading(false);
         setError(data.message);
         return;
       }
+
       setLoading(false);
-      setError(null);
+      setError(null); // what if user tries once and gets the error and trying 2nd time --> we need to change the variable to false
       navigate('/sign-in');
     } catch (error) {
       setLoading(false);
       setError(error.message);
     }
   };
+
+
   return (
     <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
+      <h1 className='text-3xl   text-center font-semibold my-7'>Sign Up</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='text'
@@ -49,6 +58,7 @@ export default function SignUp() {
           id='username'
           onChange={handleChange}
         />
+
         <input
           type='email'
           placeholder='email'
@@ -56,6 +66,7 @@ export default function SignUp() {
           id='email'
           onChange={handleChange}
         />
+
         <input
           type='password'
           placeholder='password'
