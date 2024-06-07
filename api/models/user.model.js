@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema(
     },
     avatar:{
       type: String,
-      default: "../../client/src/assets/image.jpg"
+      default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
     },
   },
-  { timestamps: true } // it will show, when user created and updated the data
+  { timestamps: true }
 );
 
 const User = mongoose.model('User', userSchema);
