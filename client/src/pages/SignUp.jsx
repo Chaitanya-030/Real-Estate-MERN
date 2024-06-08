@@ -16,7 +16,7 @@ export default function SignUp() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // This prevents the default form submission behavior, which would otherwise cause a page refresh.
     try {
       setLoading(true); // the first thing is to set the loading --> true :)
 
@@ -82,7 +82,7 @@ export default function SignUp() {
         >
           {loading ? 'Loading...' : 'Sign Up'}
         </button>
-        <OAuth />
+        <OAuth /> 
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>

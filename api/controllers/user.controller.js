@@ -21,6 +21,7 @@ export const test = (req, res) => {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
+          // those parameters that are changes, only gets updated
           $set: {
             username: req.body.username,
             email: req.body.email,

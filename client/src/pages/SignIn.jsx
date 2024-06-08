@@ -1,3 +1,6 @@
+// NOTE ABOUT REDUX APPROACH : This approach offers several advantages, particularly for larger applications where centralized state management can lead to more maintainable and scalable code.
+
+
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
