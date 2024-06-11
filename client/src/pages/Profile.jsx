@@ -42,7 +42,7 @@ export default function Profile() {
     }
   }, [file]);
 
-  const handleFileUpload = (file) => {
+    const handleFileUpload = (file) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
@@ -124,7 +124,7 @@ export default function Profile() {
       }
       dispatch(deleteUserSuccess(data));
     } catch (error) {
-      dispatch(deleteUserFailure(data.message));
+      dispatch(deleteUserFailure(error.message));
     }
   };
 
@@ -278,7 +278,7 @@ export default function Profile() {
               </Link>
 
               <div className='flex flex-col item-center'>
-              <button
+                <button
                   onClick={() => handleListingDelete(listing._id)}
                   className='text-red-700 uppercase'
                 >
